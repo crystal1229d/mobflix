@@ -1,3 +1,5 @@
+import Layout from '@common/Layout'
+
 export default function ClubPage() {
-  return <div>ClubPage</div>
+  return <Layout>ClubPage</Layout>
 }

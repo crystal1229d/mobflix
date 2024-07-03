@@ -1,3 +1,5 @@
+import Layout from '@common/Layout'
+
 export default function FilmPage() {
-  return <div>FilmPage</div>
+  return <Layout>FilmPage</Layout>
 }
