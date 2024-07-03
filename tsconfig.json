@@ -1,5 +1,16 @@
 {
   "files": [],
+  "compilerOptions": {
+    /* Path Alias */
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+      "@pages/*": ["pages/*"],
+      "@components/*": ["components/*"],
+      "@common/*": ["components/common/*"]
+    },
+    "types": ["vite/client"]
+  },
   "references": [
     {
       "path": "./tsconfig.app.json"
@@ -7,12 +18,5 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ],
-  "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "~/*": ["./src/*"],
-      "node_modules/*": ["./node_modules/*"]
-    }
-  }
+  ]
 }
