@@ -7,7 +7,9 @@
       "@/*": ["*"],
       "@pages/*": ["pages/*"],
       "@components/*": ["components/*"],
-      "@common/*": ["components/common/*"]
+      "@common/*": ["components/common/*"],
+      "@styles/*": ["styles/*"],
+      "@constants/*": ["constants/*"]
     },
     "types": ["vite/client"]
   },
