@@ -8,11 +8,12 @@ import { NAVIGATION } from '@constants/index'
 export default function UpperNavbar() {
   const location = useLocation()
 
-  const [isSelected, setSelected] = useState(NAVIGATION[0].label)
+  const [isSelected, setSelected] = useState('')
 
   useEffect(() => {
-    if (location.pathname === '/') {
-      setSelected(NAVIGATION[0].label)
+    const currentNav = NAVIGATION.find(nav => nav.link === location.pathname)
+    if (currentNav) {
+      setSelected(currentNav.label)
     }
   }, [location.pathname])
 
