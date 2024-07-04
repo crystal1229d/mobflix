@@ -10,6 +10,7 @@ export default function FilmPage() {
   return (
     <Layout>
       <FilmForm />
+      <Spacing size={20} />
       {FILM_LIST_TYPES.map(({ type, title }) => (
         <React.Fragment key={type}>
           <FilmList

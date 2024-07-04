@@ -13,7 +13,7 @@ interface FilmItemProps {
 }
 
 export default function FilmItem({ film, removeFilm }: FilmItemProps) {
-  const { title, rating } = film
+  const { id, title, rating } = film
 
   return (
     <StyledItem>
@@ -39,7 +39,7 @@ export default function FilmItem({ film, removeFilm }: FilmItemProps) {
         <Rating rating={rating} />
       </div>
       <Spacing size={12} />
-      <ButtonDelete onClick={() => removeFilm(film.id)} />
+      <ButtonDelete onClick={() => removeFilm(id)} />
     </StyledItem>
   )
 }
