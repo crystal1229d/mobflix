@@ -12,3 +12,14 @@ export const NAVIGATION = [
     link: '/club'
   }
 ]
+
+export const FILM_LIST_TYPES = [
+  {
+    type: 'all',
+    title: 'all films'
+  },
+  {
+    type: 'top10',
+    title: 'top 10 films'
+  }
+]

@@ -7,21 +7,13 @@ function Layout({ children }: { children: React.ReactNode }) {
 
 const StyledFlex = styled(Flex)`
   width: 90vw;
-  margin: 0px auto 175px auto;
+  margin: 0px auto;
+  display: flex;
   align-items: center;
   justify-content: center;
 
-  @media (min-width: 768px) {
-    width: 80vw;
-  }
-
-  @media (min-width: 1024px) {
-    width: 70vw;
-  }
-
-  @media (min-width: 1280px) {
-    width: 57vw;
-  }
+  overflow-x: hidden;
+  oveflow-y: auto;
 `
 
 export default Layout

@@ -9,7 +9,10 @@
       "@components/*": ["components/*"],
       "@common/*": ["components/common/*"],
       "@styles/*": ["styles/*"],
-      "@constants/*": ["constants/*"]
+      "@constants/*": ["constants/*"],
+      "@models/*": ["models/*"],
+      "@stores/*": ["stores/*"],
+      "@contexts/*": ["contexts/*"]
     },
     "types": ["vite/client"]
   },

@@ -17,6 +17,8 @@ export const colorPalette = css`
     --redForLogo: rgb(196, 30, 58);
 
     --grayishBlue: rgba(146, 168, 209, 1);
+
+    --gold: rgb(253, 218, 13);
   }
 `
 
@@ -35,7 +37,9 @@ export const colors = {
   red: 'var(--red)',
   redForLogo: 'var(--redForLogo)',
 
-  grayishBlue: 'var(--grayishBlue)'
+  grayishBlue: 'var(--grayishBlue)',
+
+  gold: 'var(--gold)'
 }
 
 export type Colors = keyof typeof colors
