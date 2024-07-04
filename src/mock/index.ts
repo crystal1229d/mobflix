@@ -54,6 +54,7 @@ export const CLUB_MEMBERS = [
     id: 'member01',
     name: '이수정',
     age: 27,
-    address: '서울'
+    address: '서울',
+    register_datetime: 'Thu Jul 04 2024 14:03:28 GMT+0900'
   }
 ]

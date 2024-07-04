@@ -1,46 +1,61 @@
 import { makeAutoObservable } from 'mobx'
 
-class Member {
-  id: number
+import { CLUB_MEMBERS } from '@/mock'
+import { IMember } from '@models/member'
+
+class Member implements IMember {
+  id: string
   name: string
   age: number
   address: string
+  register_datetime: string
 
-  constructor(id: number, name: string, age: number, address: string) {
+  constructor(
+    id: string,
+    name: string,
+    age: number,
+    address: string,
+    register_datetime: string
+  ) {
     this.id = id
     this.name = name
     this.age = age
     this.address = address
+    this.register_datetime = register_datetime
     makeAutoObservable(this)
   }
 }
 
 class ClubStore {
-  members: Member[] = []
+  members: Member[] = CLUB_MEMBERS // []
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this, {}, { autoBind: true })
   }
 
-  addMember(member: Member) {
-    this.members.push(member)
+  addMember(member: Omit<Member, 'register_datetime'>) {
+    const newMember = new Member(
+      member.id,
+      member.name,
+      member.age,
+      member.address,
+      new Date() + ''
+    )
+    this.members.push(newMember)
   }
 
-  removeMember(id: number) {
+  removeMember(id: string) {
     this.members = this.members.filter(member => member.id !== id)
   }
 
-  updateMember(updatedMember: Member) {
-    const index = this.members.findIndex(
-      member => member.id === updatedMember.id
-    )
-    if (index > -1) {
-      this.members[index] = updatedMember
-    }
-  }
-
   get latestMembers() {
-    return this.members.slice().sort((a, b) => b.id - a.id)
+    return this.members
+      .slice()
+      .sort(
+        (a, b) =>
+          new Date(b.register_datetime).getTime() -
+          new Date(a.register_datetime).getTime()
+      )
   }
 }
 

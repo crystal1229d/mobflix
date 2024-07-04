@@ -1,12 +1,19 @@
-import React, { useState } from 'react'
+import React, { useId, useState } from 'react'
 import styled from 'styled-components'
+import { observer } from 'mobx-react-lite'
 
-export default function ClubForm() {
+import { useRootStore } from '@contexts/StoreContext'
+
+const ClubForm = observer(() => {
+  const { clubStore } = useRootStore()
+
   const [formData, setFormData] = useState({
     name: '',
     age: '',
     address: ''
   })
+
+  const uniqueId = useId()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -18,6 +25,22 @@ export default function ClubForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    const { name, age, address } = formData
+
+    if (!name || !age || !address) {
+      alert('Please fill out both fields.')
+      return
+    }
+
+    if (parseInt(age) <= 0) {
+      alert('Please enter age over 0')
+      return
+    }
+
+    clubStore.addMember({ id: uniqueId, name, age: parseInt(age), address })
+
+    setFormData({ name: '', age: '', address: '' })
   }
 
   return (
@@ -58,7 +81,9 @@ export default function ClubForm() {
       <SubmitButton type="submit">Submit</SubmitButton>
     </FormContainer>
   )
-}
+})
+
+export default ClubForm
 
 const FormContainer = styled.form`
   display: flex;
