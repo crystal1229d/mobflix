@@ -4,6 +4,7 @@ import Header from '@components/common/Header'
 import HomePage from '@pages/Home'
 import FilmPage from '@pages/Film'
 import ClubPage from '@pages/Club'
+import SearchResultsPage from '@pages/SearchResults'
 
 export default function Router() {
   return (
@@ -21,6 +22,10 @@ export default function Router() {
         <Route
           path="/club"
           element={<ClubPage />}
+        />
+        <Route
+          path="/search-results"
+          element={<SearchResultsPage />}
         />
       </Routes>
     </BrowserRouter>

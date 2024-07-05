@@ -23,3 +23,18 @@ export const FILM_LIST_TYPES = [
     title: 'top 10 films'
   }
 ]
+
+export const SEARCH_FILTER = [
+  {
+    type: 'all',
+    label: 'all'
+  },
+  {
+    type: 'films',
+    label: 'films'
+  },
+  {
+    type: 'club',
+    label: 'club members'
+  }
+]

@@ -57,6 +57,12 @@ class ClubStore {
           new Date(a.register_datetime).getTime()
       )
   }
+
+  searchMembers(keyword: string) {
+    return this.members.filter(member =>
+      member.name.toLowerCase().includes(keyword.toLowerCase())
+    )
+  }
 }
 
 export default ClubStore

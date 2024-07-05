@@ -12,7 +12,6 @@ const StyledFlex = styled(Flex)`
   align-items: center;
   justify-content: center;
 
-  overflow-x: hidden;
   oveflow-y: auto;
 `
 

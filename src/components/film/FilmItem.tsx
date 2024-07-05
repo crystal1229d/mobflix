@@ -58,6 +58,7 @@ const StyledItem = styled.li`
 
   text-align: center;
   background-color: ${colors.gray50};
+  border-radius: 5px;
 
   div {
     width: inherit;

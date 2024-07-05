@@ -54,6 +54,12 @@ class FilmStore {
           new Date(a.register_datetime).getTime()
       )
   }
+
+  searchFilms(keyword: string) {
+    return this.films.filter(film =>
+      film.title.toLowerCase().includes(keyword.toLowerCase())
+    )
+  }
 }
 
 export default FilmStore
