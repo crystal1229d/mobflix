@@ -12,7 +12,7 @@ class RootStore {
   filmStore: FilmStore
   clubStore: ClubStore
   uiStore: UiStore
-  searchResults: (IFilm | IMember)[] = []
+  searchResults: Array<IFilm | IMember> = []
   searchFilter: SearchFilter = 'all'
   searchKeyword: string = ''
 
@@ -42,7 +42,7 @@ class RootStore {
     this.setSearchResults([...results.films, ...results.members])
   }
 
-  setSearchResults(results: (IFilm | IMember)[]) {
+  setSearchResults(results: Array<IFilm | IMember>) {
     this.searchResults = results
   }
 
