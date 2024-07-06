@@ -5,6 +5,7 @@ import HomePage from '@pages/Home'
 import FilmPage from '@pages/Film'
 import ClubPage from '@pages/Club'
 import SearchResultsPage from '@pages/SearchResults'
+import SettingPage from '@pages/Setting'
 
 export default function Router() {
   return (
@@ -26,6 +27,10 @@ export default function Router() {
         <Route
           path="/search-results"
           element={<SearchResultsPage />}
+        />
+        <Route
+          path="/setting"
+          element={<SettingPage />}
         />
       </Routes>
     </BrowserRouter>

@@ -73,6 +73,7 @@ export default Search
 
 const SearchContainer = styled.div`
   margin-left: auto;
+  margin-right: 20px;
   display: flex;
   align-items: center;
   gap: 10px;

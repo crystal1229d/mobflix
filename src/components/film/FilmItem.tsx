@@ -35,7 +35,7 @@ export default function FilmItem({ film, removeFilm }: FilmItemProps) {
             {title}
           </Text>
         )}
-        <Spacing size={5} />
+        <Spacing size={10} />
         <Rating rating={rating} />
       </div>
       <Spacing size={12} />
@@ -60,7 +60,7 @@ const StyledItem = styled.li`
   background-color: ${colors.gray50};
   border-radius: 5px;
 
-  div {
+  & > div {
     width: inherit;
     display: flex;
     flex-direction: column;

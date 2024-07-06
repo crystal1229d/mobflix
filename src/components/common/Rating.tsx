@@ -1,30 +1,49 @@
 import styled from 'styled-components'
+import { observer } from 'mobx-react-lite'
+
+import { IoStarOutline, IoStar } from 'react-icons/io5'
 
 import Text from '@common/Text'
-import { colors } from '@/styles/colorPalette'
+import { colors } from '@styles/colorPalette'
+import { useRootStore } from '@contexts/StoreContext'
 
-export default function Rating({ rating }: { rating: number }) {
-  return (
-    <Container>
-      <span>
-        <Text typography="t5">{rating} / 5</Text>
-      </span>
-    </Container>
-  )
-}
+const Rating = observer(({ rating }: { rating: number }) => {
+  const { uiStore } = useRootStore()
+
+  const renderRating = () => {
+    if (uiStore.ratingStyle === 'number') {
+      return <Text typography="t5">{rating} / 5</Text>
+    } else {
+      const stars = []
+      for (let i = 0; i < 5; i++) {
+        if (i < rating) {
+          stars.push(
+            <IoStar
+              key={i}
+              color={colors.gold}
+              size={20}
+            />
+          )
+        } else {
+          stars.push(
+            <IoStarOutline
+              key={i}
+              color={colors.gold}
+              size={20}
+            />
+          )
+        }
+      }
+      return <span>{stars}</span>
+    }
+  }
+
+  return <Container>{renderRating()}</Container>
+})
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
-
-  span {
-    width: 37px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: ${colors.gold};
-    border-radius: 100%;
-  }
 `
+
+export default Rating

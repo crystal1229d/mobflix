@@ -1,3 +1,4 @@
+// @TODO: Setting, SearchResults 페이지 진입 시 선택될 NAVIGATION 처리
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
