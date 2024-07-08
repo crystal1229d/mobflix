@@ -32,62 +32,60 @@ export default function FilmItem({
   }
 
   return (
-    <StyledItem>
-      <div>
-        {isEditing ? (
-          <Flex dir="column">
-            <input
-              type="text"
-              value={editedTitle}
-              onChange={e => setEditedTitle(e.target.value)}
-            />
-            <input
-              type="number"
-              value={editedRating}
-              onChange={e => setEditedRating(Number(e.target.value))}
-            />
-            <button onClick={handleSave}>Save</button>
-            <button onClick={() => setIsEditing(false)}>Cancel</button>
-          </Flex>
-        ) : (
-          <>
-            {title.length > 10 ? (
-              <TitleWrapper>
-                <Title>
-                  <Text
-                    typography="t5"
-                    bold>
-                    {title}
-                  </Text>
-                </Title>
-              </TitleWrapper>
-            ) : (
-              <Text
-                typography="t5"
-                bold>
-                {title}
-              </Text>
-            )}
-            <Spacing size={10} />
-            <Rating rating={rating} />
-          </>
-        )}
-      </div>
+    <StyledItemContainer>
+      {isEditing ? (
+        <Flex dir="column">
+          <input
+            type="text"
+            value={editedTitle}
+            onChange={e => setEditedTitle(e.target.value)}
+          />
+          <input
+            type="number"
+            value={editedRating}
+            onChange={e => setEditedRating(Number(e.target.value))}
+          />
+          <button onClick={handleSave}>Save</button>
+          <button onClick={() => setIsEditing(false)}>Cancel</button>
+        </Flex>
+      ) : (
+        <StyledItem>
+          {title.length > 10 ? (
+            <TitleWrapper>
+              <Title>
+                <Text
+                  typography="t5"
+                  bold>
+                  {title}
+                </Text>
+              </Title>
+            </TitleWrapper>
+          ) : (
+            <Text
+              typography="t5"
+              bold>
+              {title}
+            </Text>
+          )}
+          <Spacing size={10} />
+          <Rating rating={rating} />
+        </StyledItem>
+      )}
       <Spacing size={12} />
 
       <Flex>
         {!isEditing && <ButtonEdit onClick={() => setIsEditing(true)} />}
         <ButtonDelete onClick={() => removeFilm(id)} />
       </Flex>
-    </StyledItem>
+    </StyledItemContainer>
   )
 }
 
-const StyledItem = styled.li`
+const StyledItemContainer = styled.li`
   width: 150px;
   height: 90px;
   padding: 10px;
-  contentx-box: border-box;
+  box-sizing: border-box;
 
   flex: 0 0 auto;
   display: flex;
@@ -98,13 +96,11 @@ const StyledItem = styled.li`
   text-align: center;
   background-color: ${colors.gray50};
   border-radius: 5px;
+`
 
-  & > div:nth-child(0) {
-    width: inherit;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+const StyledItem = styled(Flex)`
+  width: 100%;
+  flex-direction: column;
 `
 
 const TitleWrapper = styled.div`
@@ -113,11 +109,12 @@ const TitleWrapper = styled.div`
 `
 
 const Title = styled.p`
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee 7s linear infinite;
+  width: 100%;
   margin: 0;
   padding: 1px;
+
+  white-space: nowrap;
+  animation: marquee 6s linear infinite;
 
   @keyframes marquee {
     0% {
@@ -127,7 +124,7 @@ const Title = styled.p`
       transform: translateX(10%);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-90%);
     }
   }
 `
