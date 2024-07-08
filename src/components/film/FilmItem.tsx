@@ -1,45 +1,84 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 
 import { IFilm } from '@models/film'
 import { colors } from '@styles/colorPalette'
 import Rating from '@common/Rating'
 import Text from '@common/Text'
-import ButtonDelete from '@common/ButtonDelete'
 import Spacing from '@common/Spacing'
+import Flex from '@common/Flex'
+import ButtonEdit from '@common/ButtonEdit'
+import ButtonDelete from '@common/ButtonDelete'
 
 interface FilmItemProps {
   film: IFilm
   removeFilm: (id: string) => void
+  updateFilm: (id: string, updatedFields: Partial<Omit<IFilm, 'id'>>) => void
 }
 
-export default function FilmItem({ film, removeFilm }: FilmItemProps) {
+export default function FilmItem({
+  film,
+  removeFilm,
+  updateFilm
+}: FilmItemProps) {
   const { id, title, rating } = film
+  const [isEditing, setIsEditing] = useState(false)
+  const [editedTitle, setEditedTitle] = useState(title)
+  const [editedRating, setEditedRating] = useState(rating)
+
+  const handleSave = () => {
+    updateFilm(id, { title: editedTitle, rating: editedRating })
+    setIsEditing(false)
+  }
 
   return (
     <StyledItem>
       <div>
-        {title.length > 10 ? (
-          <TitleWrapper>
-            <Title>
+        {isEditing ? (
+          <Flex dir="column">
+            <input
+              type="text"
+              value={editedTitle}
+              onChange={e => setEditedTitle(e.target.value)}
+            />
+            <input
+              type="number"
+              value={editedRating}
+              onChange={e => setEditedRating(Number(e.target.value))}
+            />
+            <button onClick={handleSave}>Save</button>
+            <button onClick={() => setIsEditing(false)}>Cancel</button>
+          </Flex>
+        ) : (
+          <>
+            {title.length > 10 ? (
+              <TitleWrapper>
+                <Title>
+                  <Text
+                    typography="t5"
+                    bold>
+                    {title}
+                  </Text>
+                </Title>
+              </TitleWrapper>
+            ) : (
               <Text
                 typography="t5"
                 bold>
                 {title}
               </Text>
-            </Title>
-          </TitleWrapper>
-        ) : (
-          <Text
-            typography="t5"
-            bold>
-            {title}
-          </Text>
+            )}
+            <Spacing size={10} />
+            <Rating rating={rating} />
+          </>
         )}
-        <Spacing size={10} />
-        <Rating rating={rating} />
       </div>
       <Spacing size={12} />
-      <ButtonDelete onClick={() => removeFilm(id)} />
+
+      <Flex>
+        {!isEditing && <ButtonEdit onClick={() => setIsEditing(true)} />}
+        <ButtonDelete onClick={() => removeFilm(id)} />
+      </Flex>
     </StyledItem>
   )
 }
@@ -60,7 +99,7 @@ const StyledItem = styled.li`
   background-color: ${colors.gray50};
   border-radius: 5px;
 
-  & > div {
+  & > div:nth-child(0) {
     width: inherit;
     display: flex;
     flex-direction: column;

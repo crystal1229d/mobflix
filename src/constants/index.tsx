@@ -24,6 +24,13 @@ export const FILM_LIST_TYPES = [
   }
 ]
 
+export const CLUB_MEMBERS_LIST_TYPES = [
+  {
+    type: 'all',
+    title: 'Members of Mobflix Film-Club'
+  }
+]
+
 export const SEARCH_FILTER = [
   {
     type: 'all',

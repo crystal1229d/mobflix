@@ -34,6 +34,13 @@ class FilmStore {
     this.films.push(newFilm)
   }
 
+  updateFilm(id: string, updatedFields: Partial<Omit<IFilm, 'id'>>) {
+    const film = this.films.find(film => film.id === id)
+    if (film) {
+      Object.assign(film, updatedFields)
+    }
+  }
+
   removeFilm(id: string) {
     this.films = this.films.filter(film => film.id !== id)
   }

@@ -39,6 +39,7 @@ const FilmList = observer(
                 key={film.id}
                 film={film}
                 removeFilm={filmStore.removeFilm}
+                updateFilm={filmStore.updateFilm}
               />
             ))}
           </StyledList>
