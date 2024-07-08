@@ -37,7 +37,8 @@
 <br />
 
 <img src='/public/README/2.png' alt='preview' width='450' />
-<p>영화 페이지 - 영화 등록/삭제</p>
+<img src='/public/README/2-1.png' alt='preview' width='170' />
+<p>영화 페이지 - 영화 등록/삭제/수정</p>
 
 <br />
 
