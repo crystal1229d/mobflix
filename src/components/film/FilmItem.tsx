@@ -34,7 +34,9 @@ export default function FilmItem({
   return (
     <StyledItemContainer>
       {isEditing ? (
-        <Flex dir="column">
+        <Flex
+          dir="column"
+          gap="3px">
           <input
             type="text"
             value={editedTitle}
@@ -71,7 +73,7 @@ export default function FilmItem({
           <Rating rating={rating} />
         </StyledItem>
       )}
-      <Spacing size={12} />
+      <Spacing size={10} />
 
       <Flex>
         {!isEditing && <ButtonEdit onClick={() => setIsEditing(true)} />}
@@ -82,8 +84,8 @@ export default function FilmItem({
 }
 
 const StyledItemContainer = styled.li`
-  width: 150px;
-  height: 90px;
+  width: 200px;
+  height: 150px;
   padding: 10px;
   box-sizing: border-box;
 
